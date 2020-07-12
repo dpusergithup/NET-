@@ -18,5 +18,9 @@ namespace _02_面向对象
         {
             this.Name = name;
         }
+        public void textcs(string name)
+        {
+            
+        }
     }
 }
