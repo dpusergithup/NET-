@@ -14,6 +14,7 @@ namespace Model
 
         public DateTime Ndate { get; set; }
 
+
         public string Ncontent { get; set; }
     }
 }
