@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MVCUI显示层.web.webservice.NewsInfoes>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>WebServiceList</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("CreateWebService New", "CreateWebService")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NContent)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NContent)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webServiceGetAllMVCList">
+        <s:complexType />
+      </s:element>
+      <s:element name="webServiceGetAllMVCListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="webServiceGetAllMVCListResult" type="tns:ArrayOfNewsInfoes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNewsInfoes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NewsInfoes" nillable="true" type="tns:NewsInfoes" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NewsInfoes">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Nid" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NTitle" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="NContent" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="webServiceGetAllMVCListByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webServiceGetAllMVCListByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="webServiceGetAllMVCListByNameResult" type="tns:ArrayOfNewsInfoes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webServiceGetAllMVCListById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webServiceGetAllMVCListByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="webServiceGetAllMVCListByIdResult" type="tns:NewsInfoes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webServiceeditNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ni" type="tns:NewsInfoes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webServiceeditNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="webServiceeditNewsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webServiceDeleteNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ni" type="tns:NewsInfoes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webServiceDeleteNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="webServiceDeleteNewsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webServiceAddNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ni" type="tns:NewsInfoes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webServiceAddNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="webServiceAddNewsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="webServiceGetAllMVCListSoapIn">
+    <wsdl:part name="parameters" element="tns:webServiceGetAllMVCList" />
+  </wsdl:message>
+  <wsdl:message name="webServiceGetAllMVCListSoapOut">
+    <wsdl:part name="parameters" element="tns:webServiceGetAllMVCListResponse" />
+  </wsdl:message>
+  <wsdl:message name="webServiceGetAllMVCListByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:webServiceGetAllMVCListByName" />
+  </wsdl:message>
+  <wsdl:message name="webServiceGetAllMVCListByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:webServiceGetAllMVCListByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="webServiceGetAllMVCListByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:webServiceGetAllMVCListById" />
+  </wsdl:message>
+  <wsdl:message name="webServiceGetAllMVCListByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:webServiceGetAllMVCListByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="webServiceeditNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:webServiceeditNews" />
+  </wsdl:message>
+  <wsdl:message name="webServiceeditNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:webServiceeditNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="webServiceDeleteNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:webServiceDeleteNews" />
+  </wsdl:message>
+  <wsdl:message name="webServiceDeleteNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:webServiceDeleteNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="webServiceAddNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:webServiceAddNews" />
+  </wsdl:message>
+  <wsdl:message name="webServiceAddNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:webServiceAddNewsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="webServiceGetAllMVCList">
+      <wsdl:input message="tns:webServiceGetAllMVCListSoapIn" />
+      <wsdl:output message="tns:webServiceGetAllMVCListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="webServiceGetAllMVCListByName">
+      <wsdl:input message="tns:webServiceGetAllMVCListByNameSoapIn" />
+      <wsdl:output message="tns:webServiceGetAllMVCListByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="webServiceGetAllMVCListById">
+      <wsdl:input message="tns:webServiceGetAllMVCListByIdSoapIn" />
+      <wsdl:output message="tns:webServiceGetAllMVCListByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="webServiceeditNews">
+      <wsdl:input message="tns:webServiceeditNewsSoapIn" />
+      <wsdl:output message="tns:webServiceeditNewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="webServiceDeleteNews">
+      <wsdl:input message="tns:webServiceDeleteNewsSoapIn" />
+      <wsdl:output message="tns:webServiceDeleteNewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="webServiceAddNews">
+      <wsdl:input message="tns:webServiceAddNewsSoapIn" />
+      <wsdl:output message="tns:webServiceAddNewsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webServiceGetAllMVCList">
+      <soap:operation soapAction="http://tempuri.org/webServiceGetAllMVCList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webServiceGetAllMVCListByName">
+      <soap:operation soapAction="http://tempuri.org/webServiceGetAllMVCListByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webServiceGetAllMVCListById">
+      <soap:operation soapAction="http://tempuri.org/webServiceGetAllMVCListById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webServiceeditNews">
+      <soap:operation soapAction="http://tempuri.org/webServiceeditNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webServiceDeleteNews">
+      <soap:operation soapAction="http://tempuri.org/webServiceDeleteNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webServiceAddNews">
+      <soap:operation soapAction="http://tempuri.org/webServiceAddNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webServiceGetAllMVCList">
+      <soap12:operation soapAction="http://tempuri.org/webServiceGetAllMVCList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webServiceGetAllMVCListByName">
+      <soap12:operation soapAction="http://tempuri.org/webServiceGetAllMVCListByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webServiceGetAllMVCListById">
+      <soap12:operation soapAction="http://tempuri.org/webServiceGetAllMVCListById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webServiceeditNews">
+      <soap12:operation soapAction="http://tempuri.org/webServiceeditNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webServiceDeleteNews">
+      <soap12:operation soapAction="http://tempuri.org/webServiceDeleteNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webServiceAddNews">
+      <soap12:operation soapAction="http://tempuri.org/webServiceAddNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://localhost:6324/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://localhost:6324/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

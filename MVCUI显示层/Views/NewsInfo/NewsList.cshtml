@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewsList</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            initTable();
+        });
+
+        //加载数据
+        function initTable() {
+            $.getJSON("/NewsInfo/AllNewsList", {}, function (jsondate) {
+                $("#bodyId").html("");
+                //var jsondate = $.parseJSON(date);
+                for (var key in jsondate)
+                {
+                    var str = "<tr>";
+                    str += "<td>" + jsondate[key].Nid + "</td>";
+                    str += "<td>" + jsondate[key].NTitle + "</td>";
+                    str += "<td>" + jsondate[key].NDate + "</td>";
+                    str += "<td>" + jsondate[key].NContent + "</td>";
+                    str += "<td><a href='/NewsInfo/Newsedit/" + jsondate[key].Nid + "'>修改</a>&nbsp;</td>";
+                    str += "</tr>";
+
+                    $("#bodyId").append(str);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <a href="/NewsInfo/NewsAdd">添加</a>
+    <table>
+        <thead>
+            <tr><th>编号</th><th>标题</th><th>时间</th><th>内容</th></tr>
+        </thead>
+        <tbody id="bodyId">
+
+        </tbody>
+    </table>
+</body>
+</html>

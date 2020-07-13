@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1592c91e992347948c87c4da5f24b1d0" Name="Diagram1">
+        <EntityTypeShape EntityType="JHcoTextDemoModel.UserInfo" Width="1.5" PointX="3.625" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JHcoTextDemoModel.RoleInfo" Width="1.5" PointX="6.375" PointY="3.25" />
+        <EntityTypeShape EntityType="JHcoTextDemoModel.ActionInfo" Width="1.5" PointX="10.25" PointY="0.5" />
+        <EntityTypeShape EntityType="JHcoTextDemoModel.R_UserInfo_ActionInfo" Width="1.5" PointX="0.75" PointY="0.5" />
+        <AssociationConnector Association="JHcoTextDemoModel.FK_ActionInfoR_UserInfo_ActionInfo" />
+        <AssociationConnector Association="JHcoTextDemoModel.FK_UserInfoR_UserInfo_ActionInfo" />
+        <AssociationConnector Association="JHcoTextDemoModel.RoleInfoActionInfo" />
+        <AssociationConnector Association="JHcoTextDemoModel.UserInfoRoleInfo" />
+        <EntityTypeShape EntityType="JHcoTextDemoModel.OrderInfo" Width="1.5" PointX="1.5" PointY="5.125" />
+        <AssociationConnector Association="JHcoTextDemoModel.FK_UserInfoOrderInfo" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

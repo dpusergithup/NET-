@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#imgCode").click(CheckCode);
+        });
+        function CheckCode() {
+            var old = $("#imgCode").attr("src");
+            var now = new Date();
+            var str = old + now.getMinutes() + now.getSeconds();
+            $("#imgCode").attr("src", str)
+        }
+
+        function afterLogin(date) {
+            if (date == "OK") {
+                //登陆成功
+                window.location.href = "/UserInfo/Index";
+            } else {
+                alert(date);
+                //刷新验证码
+                CheckCode();
+            }
+
+        }
+    </script>
+
+</head>
+<body>
+        @using (Ajax.BeginForm("ProcessLogin", "Login", new AjaxOptions() { OnSuccess = "afterLogin" }))
+        {
+            <div>
+                <p>同户名：<input type="text" name="UserName" /></p>
+                <p>密码：<input type="text" name="Password" /></p>
+                <p>验证码：<input type="text" id="CodeId" name="VCode" /></p>
+                <p><img id="imgCode" src="/Login/ShowVCode?id=2" /><a href="javascript:void(0)" onclick="CheckCode(); return false;">看不清,换一张</a></p>
+                <p>@Html.ActionLink("注册", "Create")<input type="submit" value="提交" /></p>
+            </div>
+        }
+</body>
+</html>

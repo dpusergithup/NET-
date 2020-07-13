@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TextDemo1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DengLus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Passwd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Cuntimes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsInfoes">
+          <Key>
+            <PropertyRef Name="Nid" />
+          </Key>
+          <Property Name="Nid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NTitle" Type="varchar" MaxLength="100" />
+          <Property Name="NDate" Type="datetime" />
+          <Property Name="NContent" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="UserDengLus">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UName" Type="varchar" MaxLength="30" />
+          <Property Name="UPwdWord" Type="varchar" MaxLength="30" />
+          <Property Name="UEmail" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="UserLoads">
+          <Key>
+            <PropertyRef Name="UId" />
+          </Key>
+          <Property Name="UId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UName" Type="varchar" MaxLength="30" />
+          <Property Name="UPwdWord" Type="varchar" MaxLength="50" />
+          <Property Name="UEmail" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <Function Name="P_ShowPageDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pageindex" Type="int" Mode="In" />
+          <Parameter Name="pageSize" Type="int" Mode="In" />
+          <Parameter Name="total" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="TextDemo1ModelStoreContainer">
+          <EntitySet Name="DengLus" EntityType="Self.DengLus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsInfoes" EntityType="Self.NewsInfoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDengLus" EntityType="Self.UserDengLus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLoads" EntityType="Self.UserLoads" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TextDemo1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DengLus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Passwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuntimes" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsInfoes">
+          <Key>
+            <PropertyRef Name="Nid" />
+          </Key>
+          <Property Name="Nid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NDate" Type="DateTime" Precision="3" />
+          <Property Name="NContent" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserDengLus">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UPwdWord" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserLoads">
+          <Key>
+            <PropertyRef Name="UId" />
+          </Key>
+          <Property Name="UId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UPwdWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="TextDemo1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DengLus" EntityType="Self.DengLus" />
+          <EntitySet Name="NewsInfoes" EntityType="Self.NewsInfoes" />
+          <EntitySet Name="UserDengLus" EntityType="Self.UserDengLus" />
+          <EntitySet Name="UserLoads" EntityType="Self.UserLoads" />
+          <FunctionImport Name="P_ShowPageDate" ReturnType="Collection(TextDemo1Model.P_ShowPageDate_Result)">
+            <Parameter Name="pageindex" Mode="In" Type="Int32" />
+            <Parameter Name="pageSize" Mode="In" Type="Int32" />
+            <Parameter Name="total" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="P_ShowPageDate_Result">
+          <Property Type="Int32" Name="Nid" Nullable="false" />
+          <Property Type="String" Name="NTitle" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="NDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="NContent" Nullable="true" MaxLength="1000" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TextDemo1ModelStoreContainer" CdmEntityContainer="TextDemo1Entities">
+          <EntitySetMapping Name="DengLus">
+            <EntityTypeMapping TypeName="TextDemo1Model.DengLus">
+              <MappingFragment StoreEntitySet="DengLus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Passwd" ColumnName="Passwd" />
+                <ScalarProperty Name="Cuntimes" ColumnName="Cuntimes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsInfoes">
+            <EntityTypeMapping TypeName="TextDemo1Model.NewsInfoes">
+              <MappingFragment StoreEntitySet="NewsInfoes">
+                <ScalarProperty Name="Nid" ColumnName="Nid" />
+                <ScalarProperty Name="NTitle" ColumnName="NTitle" />
+                <ScalarProperty Name="NDate" ColumnName="NDate" />
+                <ScalarProperty Name="NContent" ColumnName="NContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDengLus">
+            <EntityTypeMapping TypeName="TextDemo1Model.UserDengLus">
+              <MappingFragment StoreEntitySet="UserDengLus">
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+                <ScalarProperty Name="UName" ColumnName="UName" />
+                <ScalarProperty Name="UPwdWord" ColumnName="UPwdWord" />
+                <ScalarProperty Name="UEmail" ColumnName="UEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLoads">
+            <EntityTypeMapping TypeName="TextDemo1Model.UserLoads">
+              <MappingFragment StoreEntitySet="UserLoads">
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="UName" ColumnName="UName" />
+                <ScalarProperty Name="UPwdWord" ColumnName="UPwdWord" />
+                <ScalarProperty Name="UEmail" ColumnName="UEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="P_ShowPageDate" FunctionName="TextDemo1Model.Store.P_ShowPageDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TextDemo1Model.P_ShowPageDate_Result">
+                <ScalarProperty Name="Nid" ColumnName="Nid" />
+                <ScalarProperty Name="NTitle" ColumnName="NTitle" />
+                <ScalarProperty Name="NDate" ColumnName="NDate" />
+                <ScalarProperty Name="NContent" ColumnName="NContent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

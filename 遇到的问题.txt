@@ -1,0 +1,33 @@
+在调用webservice服务时遇到大量问题
+1//web服务封装不了（未解决问题）lambda表达式不能用
+//public IQueryable<NewsInfoes> webServiceGetAllMVCList(Expression<Func<NewsInfoes, bool>> whereLamber)
+//{
+//    return db.NewsInfoes.Where(whereLamber).AsQueryable();
+//}
+
+2配置问题需要在web服务层的配置文件中加上
+  <configSections>（此配置文件只能紧跟着<configuration>节点）
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+  </configSections>
+  <connectionStrings>
+    <add name="TextDemo1Entities" connectionString="metadata=res://*/DataModel.csdl|res://*/DataModel.ssdl|res://*/DataModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=PC-20181130CZCP;initial catalog=TextDemo1;persist security info=True;user id=sa;password=d1985101;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
+
+3传输的类型必须打上特性
+    [DataContract]
+    public partial class NewsInfoes
+    {
+        [DataMember]
+        public int Nid { get; set; }
+        [DataMember]
+        public string NTitle { get; set; }
+        [DataMember]
+        public Nullable<System.DateTime> NDate { get; set; }
+        [DataMember]
+        public string NContent { get; set; }
+    }
+
+4web服务层的引用必须加上EF的引用
+EntityFramework.dll
+EntityFramework.SqlServer.dll
